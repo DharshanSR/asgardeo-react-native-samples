@@ -8,7 +8,8 @@ This guide explains how to configure and customize the Authenticator App for you
 
 1. [Application Configuration (`app.config.json`)](#application-configuration-appconfigjson)
 2. [Expo Configuration (`app.json`)](#expo-configuration-appjson)
-3. [Logo and Branding Assets](#logo-and-branding-assets)
+3. [Splash Screen Configuration](#splash-screen-configuration)
+4. [Logo and Branding Assets](#logo-and-branding-assets)
 
 ---
 
@@ -29,7 +30,7 @@ The `config/app.config.json` file contains the core application settings, includ
 ```json
 "devMode": {
   "enabled": true,
-  "host": "https://<<IS_HOST_IP_ADDRESS>>:9443"
+  "host": "http://<<IS_HOST_IP_ADDRESS>>:<<SSL_DISABLED_PORT>>"
 }
 ```
 - `enabled`: Set to `true` to enable development mode, `false` for production
@@ -315,6 +316,46 @@ To rebrand the app:
   }
 }
 ```
+
+---
+
+## Splash Screen Configuration
+
+The splash screen is the initial screen displayed when the app launches, providing a seamless transition while the app loads. This configuration is managed through the `app.json` file.
+
+### Current Splash Screen Configuration
+
+```json
+  "plugins": [
+    "expo-splash-screen",
+    {
+      "image": "./assets/images/logo-icon.png",
+      "imageWidth": 200,
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    }
+  ]
+```
+
+#### Configuration Properties:
+
+- **`image`**: Path to the splash screen logo/image
+- **`imageWidth`**: Width of the image
+- **`resizeMode`**: How the image should be resized (`contain`, `cover`, `stretch`)
+- **`backgroundColor`**: Background color for the splash screen
+
+### Theming Limitations
+
+> [!IMPORTANT]
+> **Runtime Theming Not Supported**: The splash screen does **not support runtime theming** and cannot dynamically change based on the user's selected system theme (light/dark mode). The splash screen configuration is static and set during the app build process.
+
+### Recommended Approach
+
+Due to the theming limitations, it's recommended to use:
+
+- Use neutral colors like white (`#ffffff`) or light gray (`#f5f5f5`)
+- Avoid dark colors that may clash with different system themes
+- Consider using your brand's primary color if it works well in both light and dark contexts
 
 ---
 

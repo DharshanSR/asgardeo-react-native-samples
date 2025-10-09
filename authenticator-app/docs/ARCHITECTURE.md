@@ -8,7 +8,7 @@
 - **Secure storage for push authentication**:
    - A key pair is generated on the mobile application.
    - The private key is securely stored in the iOS Keychain and Android Keystore.
-   - The public key is transmitted to Asgardeo for push authentication signature verification.
+   - The public key is transmitted to Asgardeo/WSO2 Identity Server for push authentication signature verification.
 - **Data storage**: Account details, device ID, TOTP period, and user/organization details will be stored in React Native Async Storage (key-value pair storage).
 - **Push notifications**:
    - Firebase Cloud Messaging (FCM) is used to deliver push notifications to both iOS and Android devices.

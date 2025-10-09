@@ -141,16 +141,16 @@ For iOS push notifications to work, you need to upload your Apple Push Notificat
 > [!TIP]
 > Official Guide: [Set up APNs with FCM](https://firebase.google.com/docs/cloud-messaging/ios/certs)
 
-##### Step 4: Configure Asgardeo Push Provider
+##### Step 4: Configure Asgardeo/WSO2 Identity Server Push Provider
 
 1. Download the Firebase service account JSON file:
    - In Firebase Console, go to **Project Settings** > **Service accounts**
    - Click **Generate new private key**
    - Download the `service-account.json` file
 
-2. Configure push provider in Asgardeo:
-   - Navigate to your Asgardeo organization
-   - Add the `service-account.json` to Asgardeo push provider configuration
+2. Configure push provider in Asgardeo/WSO2 Identity Server:
+   - Navigate to your Asgardeo/WSO2 Identity Server organization
+   - Add the `service-account.json` to Asgardeo/WSO2 Identity Server push provider configuration
 
 > [!TIP]
 > Official Guide: Configure Push Provider in [Asgardeo](https://wso2.com/asgardeo/docs/guides/notification-channels/configure-push-provider/)/[WSO2 Identity Server](https://is.docs.wso2.com/en/latest/guides/notification-channels/configure-push-provider/)
