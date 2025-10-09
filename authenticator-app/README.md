@@ -8,7 +8,7 @@
   </p>
   
   <p align="center">
-    A reference mobile authenticator application built with React Native and <a href="https://wso2.com/asgardeo/">Asgardeo</a> that enables TOTP and push notification based authentication on iOS and Android devices.
+    A reference mobile authenticator application built with React Native and <a href="https://wso2.com/asgardeo/">Asgardeo</a>/<a href="https://is.docs.wso2.com/en/latest">WSO2 Identity Server</a> that enables TOTP and push notification based authentication on iOS and Android devices.
   </p>
 
   <p align="center">
@@ -153,7 +153,7 @@ For iOS push notifications to work, you need to upload your Apple Push Notificat
    - Add the `service-account.json` to Asgardeo push provider configuration
 
 > [!TIP]
-> Official Guide: [Configure Push Provider in Asgardeo](https://wso2.com/asgardeo/docs/guides/notification-channels/configure-push-provider/)
+> Official Guide: Configure Push Provider in [Asgardeo](https://wso2.com/asgardeo/docs/guides/notification-channels/configure-push-provider/)/[WSO2 Identity Server](https://is.docs.wso2.com/en/latest/guides/notification-channels/configure-push-provider/)
 
 ##### Configuration Files Structure
 
