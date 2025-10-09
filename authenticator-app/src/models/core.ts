@@ -44,21 +44,13 @@ export enum QRDataType {
  */
 export interface DeploymentConfig {
   /**
-   * Application name.
-   */
-  appName: string;
-  /**
    * Application header text.
    */
   appHeaderText: string;
   /**
-   * Path to the application icon.
-   */
-  appIconPath: string;
-  /**
    * Path to the application logo.
    */
-  appLogoPath: string;
+  appHeaderLogo: string;
   /**
    * Security configuration.
    */
@@ -100,10 +92,6 @@ export interface SecurityConfig {
    * Enable or disable app screen locks.
    */
   enableAppScreenLocks: boolean;
-  /**
-   * Enable or disable settings screen lock.
-   */
-  enableSettingsScreenLock: boolean;
 }
 
 /**

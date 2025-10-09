@@ -20,7 +20,7 @@ import { authenticateAsync, LocalAuthenticationResult } from "expo-local-authent
 import StorageConstants from "../constants/StorageConstants";
 import { UserPreferenceInterface } from "../models/storage";
 import AsyncStorageService from "./AsyncStorageService";
-import TypeConvert from "./TyperConvert";
+import TypeConvert from "./TypeConvert";
 import rawConfig from "../../config/app.config.json";
 import { DeploymentConfig } from "../models/core";
 
@@ -29,24 +29,16 @@ const config: DeploymentConfig = rawConfig as DeploymentConfig;
 /**
  * Verify local authentication.
  *
- * @param settings - Flag indicating if the verification is for the settings page.
  * @returns A promise that resolves to true if local authentication is successful or not required, false otherwise.
  */
-const verifyLocalAuthentication = async (settings: boolean = false): Promise<boolean> => {
+const verifyLocalAuthentication = async (): Promise<boolean> => {
   try {
-    // Check if the requested page is settings page.
-    if (settings) {
-      if (!config.security.enableSettingsScreenLock) {
-        return true;
-      }
-    } else {
-      const userPreferences: UserPreferenceInterface = TypeConvert.toUserPreferenceInterface(
-        await AsyncStorageService.getItem(StorageConstants.USER_PREFERENCE) ?? {});
-      const appScreenLocksEnabledInAppConfig: boolean = config.security.enableAppScreenLocks;
+    const userPreferences: UserPreferenceInterface = TypeConvert.toUserPreferenceInterface(
+      await AsyncStorageService.getItem(StorageConstants.USER_PREFERENCE) ?? {});
+    const appScreenLocksEnabledInAppConfig: boolean = config.security.enableAppScreenLocks;
 
-      if (userPreferences?.enableAppScreenLocks === false || !appScreenLocksEnabledInAppConfig) {
-        return true;
-      }
+    if (userPreferences?.enableAppScreenLocks === false || !appScreenLocksEnabledInAppConfig) {
+      return true;
     }
 
     const status: LocalAuthenticationResult = await authenticateAsync();
