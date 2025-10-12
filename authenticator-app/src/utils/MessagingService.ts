@@ -145,7 +145,6 @@ class MessagingService {
     return onNotificationOpenedApp(messagingInstance, (message: FirebaseMessagingTypes.RemoteMessage) => {
       const pushData: PushAuthenticationDataInterface | null = this.createPushDataPayload(message);
       if (pushData) {
-        clearLastNotificationResponse();
         callback(pushData);
       }
     });
@@ -161,7 +160,6 @@ class MessagingService {
     if (response) {
       const pushData: PushAuthenticationDataInterface | null = this.createPushDataPayloadFromExpo(response);
       if (pushData) {
-        clearLastNotificationResponse();
         callback(pushData);
       }
     }
@@ -182,6 +180,15 @@ class MessagingService {
           }
         }
       });
+  }
+
+  /**
+   * Clears the stored notification response data.
+   * 
+   * This can be used to prevent processing the same notification multiple times.
+   */
+  static clearNotificationData(): void {
+    clearLastNotificationResponse();
   }
 }
 
