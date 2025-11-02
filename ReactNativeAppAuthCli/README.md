@@ -1,97 +1,148 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<div align="center">
+  <img src="./images/logo.png" alt="Asgardeo Logo" width="100" align="center"/>
+  
+  <h1 align="center">React Native OAuth App</h1>
+  
+  <p align="center">
+    <strong>React Native Mobile Application for OAuth Authentication</strong>
+  </p>
+  
+  <p align="center">
+    A reference mobile application built with React Native and <a href="https://wso2.com/asgardeo/">Asgardeo</a> that demonstrates OAuth 2.0 and OpenID Connect authentication implementation on iOS and Android devices.
+  </p>
 
-# Getting Started
+  <p align="center">
+    <img src="https://img.shields.io/badge/React%20Native-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React Native"/>
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
+    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"/>
+    <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white" alt="iOS"/>
+    <img src="https://img.shields.io/badge/Asgardeo-FF6B35?style=for-the-badge" alt="Asgardeo"/>
+  </p>
+</div>
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Table of Contents
 
-## Step 1: Start Metro
+- [Overview](#overview)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+- [Dependencies](#-dependencies)
+  - [Core Dependencies](#core-dependencies)
+  - [Development Dependencies](#development-dependencies)
+- [Initial Setup](#-initial-setup)
+- [Configuration](#️-configuration)
+- [Run the Application](#️-run-the-application)
+- [Development](#-development)
+  - [Available Scripts](#available-scripts)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Overview
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+This React Native application serves as a comprehensive example of implementing OAuth 2.0 and OpenID Connect authentication in mobile applications using Asgardeo as the identity provider. It demonstrates best practices for secure authentication flows, token management, and protected routes in a React Native environment.
 
-```sh
-# Using npm
-npm start
+## Quick Start
 
-# OR using Yarn
-yarn start
-```
+Get your React Native OAuth App up and running in minutes!
 
-## Step 2: Build and run your app
+### Prerequisites
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+| Platform / Dependency | Version |
+|----------------------|---------|
+| Node.js              | ≥20.0.0 |
+| React Native         | 0.82.0  |
+| React                | 19.1.1  |
+| Android (min SDK)    | 16      |
+| TypeScript           | 5.8.3   |
 
-### Android
+Additional requirements:
 
-```sh
-# Using npm
-npm run android
+- **npm** or yarn
+- **React Native CLI**
+- **Android Studio** (for Android development)
+- **Xcode** (for iOS development, Mac only)
+- **Asgardeo Account** with an organization
 
-# OR using Yarn
-yarn android
-```
+## 📦 Dependencies
 
-### iOS
+### Core Dependencies
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- `react-native` (v0.82.0)
+- `react` (v19.1.1)
+- `react-native-app-auth` (v8.1.0)
+- `@react-navigation/native` (v7.1.18)
+- `@react-navigation/native-stack` (v7.3.28)
+- `rn-secure-storage` (v3.0.1)
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### Development Dependencies
 
-```sh
-bundle install
-```
+- `typescript` (v5.8.3)
+- `jest` for testing
+- `eslint` for code linting
+- `prettier` for code formatting
 
-Then, and every time you update your native dependencies, run:
+### 🔧 Initial Setup
 
-```sh
-bundle exec pod install
-```
+1. Clone the repository:
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+   ```bash
+   git clone https://github.com/your-username/ReactNativeAppAuthCli.git
+   cd ReactNativeAppAuthCli
+   ```
 
-```sh
-# Using npm
-npm run ios
+2. Install dependencies:
 
-# OR using Yarn
-yarn ios
-```
+   ```bash
+   npm install
+   ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Configuration
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+1. Create environment file:
 
-## Step 3: Modify your app
+   ```bash
+   cp .env.example .env
+   ```
 
-Now that you have successfully run the app, let's make changes!
+2. Configure Asgardeo Application:
+   - Navigate to [Asgardeo Console](https://console.asgardeo.io/)
+   - Create a new application
+   - Configure OAuth/OpenID Connect settings:
+     - Redirect URI: `your-redirect-url`
+     - Grant Types: Authorization Code, Refresh Token
+   - Note down the Client ID
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+3. Update environment variables:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+   ```plaintext
+   ASGARDEO_ISSUER=https://api.asgardeo.io/t/your-org/oauth2
+   ASGARDEO_CLIENT_ID=your-client-id
+   ASGARDEO_REDIRECT_URL=your-redirect-url
+   ```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Run the Application
 
-## Congratulations! :tada:
+1. Start the Metro bundler:
 
-You've successfully run and modified your React Native App. :partying_face:
+   ```bash
+   npm start
+   ```
 
-### Now what?
+2. Launch on Android:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+   ```bash
+   npm run android
+   ```
 
-# Troubleshooting
+3. Launch on iOS:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+   ```bash
+   npm run ios
+   ```
 
-# Learn More
+## Development
 
-To learn more about React Native, take a look at the following resources:
+### Available Scripts
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- `npm start` - Start the Metro bundler
+- `npm run android` - Run the Android app
+- `npm run ios` - Run the iOS app
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests with Jest
